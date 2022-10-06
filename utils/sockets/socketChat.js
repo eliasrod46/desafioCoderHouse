@@ -1,4 +1,6 @@
-const { MessagesController } = require("../controllers/messages.controller.js");
+const {
+  MessagesController,
+} = require("../../controllers/messages.controller.js");
 
 const chat = (socket, io) => {
   //-----------------------------------------------Chat
