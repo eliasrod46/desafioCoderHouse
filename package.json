@@ -1,0 +1,37 @@
+{
+  "name": "2-desafio--expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliasrod46/practicasbackendjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliasrod46/practicasbackendjs/issues"
+  },
+  "homepage": "https://github.com/eliasrod46/practicasbackendjs#readme",
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.0",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "fetch": "^1.1.0",
+    "firebase": "^9.10.0",
+    "firebase-admin": "^11.0.1",
+    "mongoose": "^6.6.1",
+    "normalizr": "^3.6.2",
+    "socket.io": "^4.5.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "nodemon": "^2.0.19"
+  }
+}
