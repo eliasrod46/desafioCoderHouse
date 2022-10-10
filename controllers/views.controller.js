@@ -11,9 +11,6 @@ function getRoot(req, res) {
 //---->Login
 function getLogin(req, res) {
   if (req.isAuthenticated()) {
-    const { username, password } = req.user;
-    const user = { username, password };
-    // res.render("index", { user });
     res.redirect("/");
   } else {
     res.render("auth/login/login");
@@ -33,9 +30,8 @@ function getFaillogin(req, res) {
 
 function getSignup(req, res) {
   if (req.isAuthenticated()) {
-    const { username, password } = req.user;
-    const user = { username, password };
-    res.render("profileUser", { user });
+    res.redirect("/");
+
   } else {
     res.render("auth/signup/signup");
   }
@@ -44,7 +40,8 @@ function getSignup(req, res) {
 function postSignup(req, res) {
   const { username, password } = req.user;
   const user = { username, password };
-  res.render("profileUser", { user });
+  res.render("index", { user });
+
 }
 
 function getFailsignup(req, res) {
