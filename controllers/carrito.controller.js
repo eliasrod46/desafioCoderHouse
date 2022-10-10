@@ -4,6 +4,7 @@ const { Productos } = require("../models/product.model.js");
 //0Ver carritos
 const seeCart = async (req, res) => {
   const respuesta = await CarritoModel.getAllCart();
+  // console.log(respuesta)
   res.json({ respuesta });
 };
 

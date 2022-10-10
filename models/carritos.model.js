@@ -100,4 +100,4 @@ class Carrito {
 
 const CarritoModel = new Carrito(dbFirebase);
 
-module.exports = CarritoModel;
+module.exports = {CarritoModel};

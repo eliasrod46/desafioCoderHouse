@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const {PRODUCTS_COL} = require('../config/environmentConfig.js')
+
 
 const ProductoSchema = new Schema({
   nombre: { type: String, required: true },
@@ -7,6 +9,6 @@ const ProductoSchema = new Schema({
   foto: { type: String, required: false },
 });
 
-const Productos = model("productos", ProductoSchema);
+const Productos = model(PRODUCTS_COL, ProductoSchema);
 
 module.exports = { Productos };

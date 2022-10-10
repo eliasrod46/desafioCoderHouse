@@ -15,9 +15,11 @@ module.exports = serverHttp;
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
+require('dotenv').config()
 
 const { connectMG } = require("./config/configDB.js");
 const passPort = require("./utils/passport.js");
+const {MONGO_URI, SECRET_KEY_SESSION} = require('./config/environmentConfig.js')
 
 //-----------------------------------------------------------------------------------------------------
 // -------------------------------------------Config Modules-------------------------------------------
@@ -29,17 +31,17 @@ passPort(passport);
 //---------------------------------------------Middlewares---------------------------------------------
 //-----------------------------------------------------------------------------------------------------
 //--->Session
+
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://admin:admin1234@cluster0.7zdpwk8.mongodb.net/?retryWrites=true&w=majority",
+      mongoUrl:MONGO_URI,
       mongoOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       },
     }),
-    secret: "keyboard cat",
+    secret: SECRET_KEY_SESSION,
     cookie: {
       httpOnly: false,
       secure: false,

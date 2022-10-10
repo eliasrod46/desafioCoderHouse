@@ -1,3 +1,4 @@
+const {MESSAGES_COL} = require('../config/environmentConfig.js')
 const { Schema, model } = require("mongoose");
 
 const MensajeSchema = new Schema(
@@ -18,6 +19,6 @@ const MensajeSchema = new Schema(
   }
 );
 
-const Mensaje = model("messages", MensajeSchema);
+const Mensaje = model(MESSAGES_COL, MensajeSchema);
 
 module.exports = { Mensaje };
