@@ -1,4 +1,5 @@
 const { dbFirebase } = require("../config/configDB.js");
+const { CARRITOS_COL } = require("../config/environmentConfig.js");
 
 class Carrito {
   constructor(db) {
@@ -8,7 +9,7 @@ class Carrito {
   //0Crear carrito, devuelve id
   async getAllCart() {
     try {
-      const resFB = await this.db.collection("carritos").get();
+      const resFB = await this.db.collection(CARRITOS_COL).get();
       const carritosMapeados = resFB.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -23,7 +24,7 @@ class Carrito {
   async createCart() {
     try {
       const resFB = await this.db
-        .collection("carritos")
+        .collection(CARRITOS_COL)
         .doc(/*Se puede especificar la id sino se genera solo */)
         .set({ productos: [] });
       return "Carrito Creado";
@@ -35,7 +36,7 @@ class Carrito {
   //2eliminar carrito
   async deleteCart(id) {
     try {
-      const resFB = await this.db.collection("carritos").doc(id).delete();
+      const resFB = await this.db.collection(CARRITOS_COL).doc(id).delete();
       return "Carrito Eliminado";
     } catch (error) {
       console.log(error);
@@ -45,7 +46,7 @@ class Carrito {
   //3Ver productos del carrito
   async showProductsInCart(id) {
     try {
-      const query = this.db.collection("carritos");
+      const query = this.db.collection(CARRITOS_COL);
       const doc = query.doc(String(id));
       const found = await doc.get();
 
@@ -59,7 +60,7 @@ class Carrito {
   async addProductsToCart(id, arrayProductos) {
     try {
       const res = await this.db
-        .collection("carritos")
+        .collection(CARRITOS_COL)
         .doc(id)
         .update({ productos: arrayProductos.productos });
       return "producto Agregado";
@@ -85,7 +86,7 @@ class Carrito {
       if (chkProd) {
         arrayProductosInCart.splice(position, 1);
         const res = await this.db
-          .collection("carritos")
+          .collection(CARRITOS_COL)
           .doc(id)
           .update({ productos: arrayProductosInCart });
         return "Producto Eliminado";
@@ -100,4 +101,4 @@ class Carrito {
 
 const CarritoModel = new Carrito(dbFirebase);
 
-module.exports = {CarritoModel};
+module.exports = { CarritoModel };

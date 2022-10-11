@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {sessionUpdate} = require('../middlewares/validationFunctions')
+const { sessionUpdate } = require("../middlewares/validationFunctions");
 const passport = require("passport");
 const {
   isValidPassword,
@@ -11,7 +11,7 @@ const controllerViews = require("../controllers/views.controller");
 const router = Router();
 
 //-->Raiz
-router.get("/", sessionUpdate,controllerViews.getRoot);
+router.get("/", sessionUpdate, controllerViews.getRoot);
 
 //--->Login
 router.get("/login", controllerViews.getLogin);
@@ -32,10 +32,6 @@ router.post(
 router.get("/failsignup", controllerViews.getFailsignup);
 router.get("/logout", controllerViews.getLogout);
 
-router.get("/ruta-protegida", checkAuthentication, (req, res) => {
-  const { username, password } = req.user;
-  const user = { username, password };
-  res.send("<h1>Ruta ok!</h1>");
-});
+router.get("/info", checkAuthentication, controllerViews.getInfo);
 
 module.exports = router;

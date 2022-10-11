@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js -p 5000"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +22,8 @@
     "normalizr": "^3.6.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "socket.io": "^4.5.2"
+    "socket.io": "^4.5.2",
+    "yargs": "^17.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
