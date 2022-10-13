@@ -15,11 +15,14 @@ module.exports = serverHttp;
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
-require('dotenv').config()
+require("dotenv").config();
 
 const { connectMG } = require("./config/configDB.js");
 const passPort = require("./utils/passport.js");
-const {MONGO_URI, SECRET_KEY_SESSION} = require('./config/environmentConfig.js')
+const {
+  MONGO_URI,
+  SECRET_KEY_SESSION,
+} = require("./config/environmentConfig.js");
 
 //-----------------------------------------------------------------------------------------------------
 // -------------------------------------------Config Modules-------------------------------------------
@@ -35,7 +38,7 @@ passPort(passport);
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl:MONGO_URI,
+      mongoUrl: MONGO_URI,
       mongoOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -76,12 +79,14 @@ const apiFakeProductsRoutes =
   (router = require("./routes/fakeProducts.routes.js"));
 const apiProductsRoutes = ({ router } = require("./routes/products.routes.js"));
 const apiCarritosRoutes = (router = require("./routes/carritos.routes.js"));
+const { getData } = require("./controllers/random.controller.js");
 
 //--->routes use
 app.use("/", viewsRouter);
 app.use("/api/productos-test", apiFakeProductsRoutes);
 app.use("/api/productos", apiProductsRoutes);
 app.use("/api/carritos", apiCarritosRoutes);
+app.get("/api/randoms", getData);
 
 //--->404 routes
 app.get("*", (req, res) => {

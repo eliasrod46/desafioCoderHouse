@@ -1,11 +1,7 @@
 const { Router } = require("express");
 const { sessionUpdate } = require("../middlewares/validationFunctions");
 const passport = require("passport");
-const {
-  isValidPassword,
-  createHash,
-  checkAuthentication,
-} = require("../utils/authFunction");
+const { checkAuthentication } = require("../utils/authFunction");
 const controllerViews = require("../controllers/views.controller");
 
 const router = Router();
@@ -32,6 +28,10 @@ router.post(
 router.get("/failsignup", controllerViews.getFailsignup);
 router.get("/logout", controllerViews.getLogout);
 
-router.get("/info", checkAuthentication, controllerViews.getInfo);
+router.get(
+  "/info",
+  [sessionUpdate, checkAuthentication],
+  controllerViews.getInfo
+);
 
 module.exports = router;
