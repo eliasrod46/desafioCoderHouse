@@ -14,11 +14,30 @@ body {
 /* --------------------------user-option------------------------- */
 /* -------------------------------------------------------------- */
 
-.button{
+.button-logout {
   background-color: #cbbddb;
   padding: 5px;
   border-radius: 20px;
   color: red;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.list-nav {
+  display: flex;
+}
+
+.list-nav li {
+  margin: 15px;
+  margin-top: 25px;
+  list-style: none;
+}
+
+.button-nav {
+  background-color: #cbbddb;
+  padding: 15px;
+  border-radius: 20px;
+  color: green;
   text-decoration: none;
   font-weight: 800;
 }
@@ -105,7 +124,7 @@ body {
   margin-top: 20px;
 }
 
-#register-1010221515{
+#register-1010221515 {
   font-size: 14px;
   text-decoration: none;
   color: #cbbddb;
@@ -114,7 +133,7 @@ body {
   text-align: center;
 }
 
-#register-1010221515 a{
+#register-1010221515 a {
   margin: auto;
   color: #8f7cec;
   text-decoration: none;
