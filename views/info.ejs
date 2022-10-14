@@ -3,7 +3,14 @@
 
 <h1>Info</h1>
 <h2>
-  Argumentos de entrada: <span style="color: red"><%= process.argv[3]%></span>
+  Argumentos de entrada:
+  <span style="color: green">
+    <ul>
+      <% for (arg in argsRecived) { %>
+      <li><%= arg %> = <%= argsRecived[arg] %></li>
+      <% } %>
+    </ul>
+  </span>
 </h2>
 <h2>
   Nombre de la plataforma:

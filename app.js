@@ -74,19 +74,19 @@ app.set("view engine", "ejs");
 //------------------------------------------------Rutas------------------------------------------------
 //-----------------------------------------------------------------------------------------------------
 //--->routes modules
-const viewsRouter = (router = require("./routes/views.routes"));
+const viewsRoutes = (router = require("./routes/views.routes"));
 const apiFakeProductsRoutes =
   (router = require("./routes/fakeProducts.routes.js"));
 const apiProductsRoutes = ({ router } = require("./routes/products.routes.js"));
 const apiCarritosRoutes = (router = require("./routes/carritos.routes.js"));
-const { getData } = require("./controllers/random.controller.js");
+const apiRandomsRoutes = (router = require("./routes/randoms.routes.js"));
 
 //--->routes use
-app.use("/", viewsRouter);
+app.use("/", viewsRoutes);
 app.use("/api/productos-test", apiFakeProductsRoutes);
 app.use("/api/productos", apiProductsRoutes);
 app.use("/api/carritos", apiCarritosRoutes);
-app.get("/api/randoms", getData);
+app.use("/api/randoms", apiRandomsRoutes);
 
 //--->404 routes
 app.get("*", (req, res) => {

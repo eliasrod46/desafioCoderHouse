@@ -4,7 +4,18 @@ const { normalizeMensajes } = require("../utils/normalizeData.js");
 class MessagesController {
   constructor() {}
 
-  //obtener chat
+  async getAll() {
+    try {
+      //Consulto a la bbdd
+      const mensajes = await Mensaje.find({}).sort({});
+      //retorno
+      return mensajes;
+    } catch (err) {
+      return { error: err };
+    }
+  }
+
+  //obtener chat normalizado
   async getAllNormalized() {
     try {
       //Consulto a la bbdd
