@@ -1,2 +1,0 @@
-info sin compression 1.4KB
-info con compression 2.5KB

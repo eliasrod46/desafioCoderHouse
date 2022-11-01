@@ -1,0 +1,6 @@
+node --prof index.js
+artillery quick --count 20 -n 50 "http://localhost:5000/info" > result_info_nolog.txt
+artillery quick --count 20 -n 50 "http://localhost:5000/info" > result_info_log.txt
+
+node --prof-process isolate-result_info_nolog.log > isolate-result_info_nolog.txt
+node --prof-process isolate-result_info_log.log > isolate-result_info_log.txt

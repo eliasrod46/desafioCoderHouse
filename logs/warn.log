@@ -1,0 +1,5 @@
+{"level":"warn","message":"La ruta: /asd, con el metodo: GET. No existe"}
+{"level":"error","message":"User already exists"}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"error","message":"Invalid Password"}
+{"level":"error","message":"Invalid Password"}

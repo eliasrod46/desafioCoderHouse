@@ -55,10 +55,6 @@ function getLogout(req, res) {
 
 //---->Info
 function getInfo(req, res) {
-  //----> datos de session del us logeado
-  const { username, password } = req.user;
-  const user = { username, password };
-
   //----> recibo y depuro el objeto de argumentos recibidos por linea de comandos
   const argsRecived = (args = require("../index.js"));
   delete argsRecived._;
@@ -73,7 +69,8 @@ function getInfo(req, res) {
   );
 
   //---->Envio el obj process, y el total de memoria usada a la vista info
-  res.render("info", { user, process, totalMemory, argsRecived });
+  console.log("Prueba");
+  res.render("info", { process, totalMemory, argsRecived });
 }
 
 module.exports = {

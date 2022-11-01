@@ -1,0 +1,33 @@
+<%- include('../public/header')%><%- include('./partials/navbar')%>
+<br />
+
+<h1>Info</h1>
+<h2>
+  Argumentos de entrada:
+  <span style="color: green">
+    <ul>
+      <% for (arg in argsRecived) { %>
+      <li><%= arg %> = <%= argsRecived[arg] %></li>
+      <% } %>
+    </ul>
+  </span>
+</h2>
+<h2>
+  Nombre de la plataforma:
+  <span style="color: green"><%= process.platform%></span>
+</h2>
+<h2>
+  Versión de node.js: <span style="color: green"><%= process.version%></span>
+</h2>
+<h2>
+  Memoria Total reservada: <span style="color: green"><%= totalMemory%></span>
+</h2>
+<h2>
+  Path de ejecucion:<span style="color: green"><%= process.execPath%></span>
+</h2>
+<h2>Process id: <span style="color: green"><%= process.pid%></span></h2>
+<h2>
+  Carpeta del proyecto: <span style="color: green"><%= process.cwd()%></span>
+</h2>
+
+<%- include('../public/footer')%>

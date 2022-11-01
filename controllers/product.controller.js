@@ -1,4 +1,5 @@
 const { Productos } = require("../models/product.model.js");
+const { logger } = require("../middlewares/logger.js");
 
 //Agregar producto
 const getData = async (req, res) => {
@@ -41,6 +42,7 @@ const updateData = async (req, res) => {
   if (usuarioModificado.modifiedCount == 1) {
     res.json({ respuesta: "Usuario Modificado" });
   } else {
+    logger.error("Usuario NO Modificado");
     res.json({ respuesta: "Usuario NO Modificado" });
   }
 };
@@ -52,6 +54,8 @@ const delData = async (req, res) => {
   if (productoBorrar.deletedCount == 1) {
     res.json({ respuesta: "Producto eliminado" });
   } else {
+    logger.error("Producto no encontrado");
+
     res.json({ respuesta: "Producto no encontrado" });
   }
 };

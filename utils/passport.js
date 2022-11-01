@@ -58,7 +58,7 @@ const passPort = (passport) => {
             }
             //Usuario guardado
             console.log(user);
-            console.log("User Registration succesful");
+            logger.info("User Registration succesful");
             return done(null, userWithId);
           });
         });
