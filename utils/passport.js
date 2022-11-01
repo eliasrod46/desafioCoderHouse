@@ -5,6 +5,7 @@ const {
   createHash,
   checkAuthentication,
 } = require("../utils/authFunction");
+const { logger } = require("../middlewares/logger.js");
 
 const passPort = (passport) => {
   passport.use(
@@ -14,12 +15,12 @@ const passPort = (passport) => {
         if (err) return done(err);
 
         if (!user) {
-          console.log("User Not Found with username " + username);
+          logger.error("User Not Found with username " + username);
           return done(null, false);
         }
 
         if (!isValidPassword(user, password)) {
-          console.log("Invalid Password");
+          logger.error("Invalid Password");
           return done(null, false);
         }
 
@@ -37,12 +38,12 @@ const passPort = (passport) => {
       (req, username, password, done) => {
         Usuarios.findOne({ username: username }, function (err, user) {
           if (err) {
-            console.log("Error in SignUp: " + err);
+            logger.error("Error in SignUp: " + err);
             return done(err);
           }
 
           if (user) {
-            console.log("User already exists");
+            logger.error("User already exists");
             return done(null, false);
           }
 
@@ -52,7 +53,7 @@ const passPort = (passport) => {
           };
           Usuarios.create(newUser, (err, userWithId) => {
             if (err) {
-              console.log("Error in Saving user: " + err);
+              logger.error("Error in Saving user: " + err);
               return done(err);
             }
             //Usuario guardado

@@ -12,6 +12,7 @@ module.exports = serverHttp;
 //-----------------------------------------------------------------------------------------------------
 //-----------------------------------------------Modules-----------------------------------------------
 //-----------------------------------------------------------------------------------------------------
+const compression = require("compression");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
@@ -23,11 +24,12 @@ const {
   MONGO_URI,
   SECRET_KEY_SESSION,
 } = require("./config/environmentConfig.js");
+const { loggInfo, loggWarn, logger } = require("./middlewares/logger.js");
 
 //-----------------------------------------------------------------------------------------------------
 // -------------------------------------------Config Modules-------------------------------------------
 //-----------------------------------------------------------------------------------------------------
-connectMG().catch((err) => console.log(err));
+connectMG().catch((err) => logger.error(err));
 passPort(passport);
 
 //-----------------------------------------------------------------------------------------------------
@@ -82,14 +84,15 @@ const apiCarritosRoutes = (router = require("./routes/carritos.routes.js"));
 const apiRandomsRoutes = (router = require("./routes/randoms.routes.js"));
 
 //--->routes use
-app.use("/", viewsRoutes);
-app.use("/api/productos-test", apiFakeProductsRoutes);
-app.use("/api/productos", apiProductsRoutes);
-app.use("/api/carritos", apiCarritosRoutes);
-app.use("/api/randoms", apiRandomsRoutes);
+app.use(compression());
+app.use("/", loggInfo, viewsRoutes);
+app.use("/api/productos-test", loggInfo, apiFakeProductsRoutes);
+app.use("/api/productos", loggInfo, apiProductsRoutes);
+app.use("/api/carritos", loggInfo, apiCarritosRoutes);
+app.use("/api/randoms", loggInfo, apiRandomsRoutes);
 
 //--->404 routes
-app.get("*", (req, res) => {
+app.get("*", loggWarn, (req, res) => {
   res.status(404).render("routing-error", {});
 });
 

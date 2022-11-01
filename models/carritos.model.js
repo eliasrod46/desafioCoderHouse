@@ -1,5 +1,6 @@
 const { dbFirebase } = require("../config/configDB.js");
 const { CARRITOS_COL } = require("../config/environmentConfig.js");
+const { logger } = require("../middlewares/logger.js");
 
 class Carrito {
   constructor(db) {
@@ -16,7 +17,7 @@ class Carrito {
       }));
       return carritosMapeados;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -29,7 +30,7 @@ class Carrito {
         .set({ productos: [] });
       return "Carrito Creado";
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -39,7 +40,7 @@ class Carrito {
       const resFB = await this.db.collection(CARRITOS_COL).doc(id).delete();
       return "Carrito Eliminado";
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -52,7 +53,7 @@ class Carrito {
 
       return found.data();
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -65,7 +66,7 @@ class Carrito {
         .update({ productos: arrayProductos.productos });
       return "producto Agregado";
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -94,7 +95,7 @@ class Carrito {
         return "El producto con el id ingresado no se encuentra en el carrito";
       }
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 }

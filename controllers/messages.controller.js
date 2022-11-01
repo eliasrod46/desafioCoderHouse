@@ -1,6 +1,6 @@
 const { Mensaje } = require("../models/messages.model.js");
 const { normalizeMensajes } = require("../utils/normalizeData.js");
-
+const { logger } = require("../middlewares/logger.js");
 class MessagesController {
   constructor() {}
 
@@ -51,7 +51,7 @@ class MessagesController {
         throw new Error("Error al guardar");
       }
     } catch (err) {
-      console.log("error en model: " + err);
+      logger.error("error en model: " + err);
     }
   }
 }
