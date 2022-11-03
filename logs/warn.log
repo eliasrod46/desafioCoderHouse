@@ -27,14 +27,4 @@
 {"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
 {"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
 {"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
-{"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
+

@@ -3,7 +3,7 @@ const winston = require("winston");
 const logger = winston.createLogger({
   // level: "info", //default level si no lo aclaro en los transport
   transports: [
-    new winston.transports.Console({ level: "info" }),
+    // new winston.transports.Console({ level: "info" }),
     new winston.transports.File({
       filename: "./logs/warn.log",
       level: "warn",
