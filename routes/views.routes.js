@@ -30,7 +30,7 @@ router.get("/logout", controllerViews.getLogout);
 
 router.get(
   "/info",
-  // [sessionUpdate, checkAuthentication],
+  [sessionUpdate, checkAuthentication],
   controllerViews.getInfo
 );
 
