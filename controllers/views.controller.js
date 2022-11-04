@@ -60,7 +60,7 @@ function getInfo(req, res) {
   const user = { username, password };
 
   //----> recibo y depuro el objeto de argumentos recibidos por linea de comandos
-  const argsRecived = (args = require("../index.js"));
+  const argsRecived = (args = require("../server.js"));
   delete argsRecived._;
   delete argsRecived.$0;
 

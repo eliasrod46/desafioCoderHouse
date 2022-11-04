@@ -20,7 +20,7 @@ const serverHttp = require("./app.js");
 //-----------------------------------------------------------------------------------------------------
 //-----------------------------------------Levanto el servidor-----------------------------------------
 //-----------------------------------------------------------------------------------------------------
-const PORT = args.port;
+const PORT = process.env.PORT || args.port;
 serverHttp.listen(PORT, () => {
   console.log(`Server escucnado en el puerto http://localhost:${PORT}`);
 });
