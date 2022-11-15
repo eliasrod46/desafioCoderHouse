@@ -35,3 +35,12 @@
 {"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
 {"level":"error","message":"Error in Saving user: ValidationError: nombre: Path `nombre` is required., edad: Path `edad` is required., direccion: Path `direccion` is required., telefono: Path `telefono` is required."}
 {"level":"error","message":"Error in Saving user: ValidationError: telefono: Path `telefono` (2645851837) is more than maximum allowed value (100)."}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /..., con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /..., con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /..., con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /..., con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /undefined, con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /undefined, con el metodo: GET. No existe"}

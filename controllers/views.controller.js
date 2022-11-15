@@ -27,7 +27,7 @@ function getProductos(req, res) {
   if (req.isAuthenticated()) {
     const { username, password } = req.user;
     const user = { username, password };
-    res.render("index", { user });
+    res.render("productos", { user });
   } else {
     res.render("auth/login/login");
   }
