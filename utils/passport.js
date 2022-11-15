@@ -46,10 +46,14 @@ const passPort = (passport) => {
             logger.error("User already exists");
             return done(null, false);
           }
-
+          console.log();
           const newUser = {
             username: username,
             password: createHash(password),
+            nombre: req.body.nombre,
+            edad: req.body.edad,
+            direccion: req.body.direccion,
+            telefono: req.body.telefono,
           };
           Usuarios.create(newUser, (err, userWithId) => {
             if (err) {

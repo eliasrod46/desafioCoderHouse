@@ -1,3 +1,7 @@
 {"level":"error","message":"User already exists"}
 {"level":"error","message":"Invalid Password"}
 {"level":"error","message":"Invalid Password"}
+{"level":"error","message":"error en model: ValidationError: author.alias: Path `author.alias` is required., author.edad: Path `author.edad` is required., author.apellido: Path `author.apellido` is required., author.nombre: Path `author.nombre` is required."}
+{"level":"error","message":"error en model: ValidationError: author.alias: Path `author.alias` is required., author.edad: Path `author.edad` is required., author.apellido: Path `author.apellido` is required., author.nombre: Path `author.nombre` is required."}
+{"level":"error","message":"Error in Saving user: ValidationError: nombre: Path `nombre` is required., edad: Path `edad` is required., direccion: Path `direccion` is required., telefono: Path `telefono` is required."}
+{"level":"error","message":"Error in Saving user: ValidationError: telefono: Path `telefono` (2645851837) is more than maximum allowed value (100)."}

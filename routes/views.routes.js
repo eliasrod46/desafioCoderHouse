@@ -9,6 +9,9 @@ const router = Router();
 //-->Raiz
 router.get("/", sessionUpdate, controllerViews.getRoot);
 
+//-->Productos
+router.get("/Productos", sessionUpdate, controllerViews.getProductos);
+
 //--->Login
 router.get("/login", controllerViews.getLogin);
 router.post(

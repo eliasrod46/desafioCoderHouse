@@ -28,3 +28,10 @@
 {"level":"warn","message":"La ruta: /json, con el metodo: GET. No existe"}
 {"level":"warn","message":"La ruta: /json/version, con el metodo: GET. No existe"}
 
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"error","message":"error en model: ValidationError: author.alias: Path `author.alias` is required., author.edad: Path `author.edad` is required., author.apellido: Path `author.apellido` is required., author.nombre: Path `author.nombre` is required."}
+{"level":"error","message":"error en model: ValidationError: author.alias: Path `author.alias` is required., author.edad: Path `author.edad` is required., author.apellido: Path `author.apellido` is required., author.nombre: Path `author.nombre` is required."}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
+{"level":"error","message":"Error in Saving user: ValidationError: nombre: Path `nombre` is required., edad: Path `edad` is required., direccion: Path `direccion` is required., telefono: Path `telefono` is required."}
+{"level":"error","message":"Error in Saving user: ValidationError: telefono: Path `telefono` (2645851837) is more than maximum allowed value (100)."}

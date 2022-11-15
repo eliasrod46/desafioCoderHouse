@@ -1,4 +1,29 @@
+const { createTransport } = require("nodemailer");
+const fs = require("fs");
+const TEST_MAIL = "eliasrod46@gmail.com";
+const PASS = "gankzjibzzgxfoqb";
+
+const transporter = createTransport({
+  service: "gmail",
+  port: 587,
+  auth: {
+    user: TEST_MAIL,
+    pass: PASS,
+  },
+});
+
 function getRoot(req, res) {
+  if (req.isAuthenticated()) {
+    const { username, password } = req.user;
+    const user = { username, password };
+    res.render("index", { user });
+  } else {
+    res.render("auth/login/login");
+  }
+}
+
+//---->Porductos
+function getProductos(req, res) {
   if (req.isAuthenticated()) {
     const { username, password } = req.user;
     const user = { username, password };
@@ -37,8 +62,29 @@ function getSignup(req, res) {
   }
 }
 
-function postSignup(req, res) {
-  const { username, password } = req.user;
+async function postSignup(req, res) {
+  const { username, password, nombre, direccion, edad, telefono } = req.user;
+  const mensaje = `<p>Datos del usaurio</p>
+  <ul>
+  <li>Username: ${username}</li>
+  <li>Password: ${password}</li>
+  <li>Nombre: ${nombre}</li>
+  <li>Edad: ${edad}</li>
+  <li>Telefono: ${telefono}</li>
+  <li>Direccion: ${direccion}</li>
+  </ul>`;
+  const mailOptions = {
+    from: TEST_MAIL,
+    to: TEST_MAIL,
+    subject: "nuevo registro",
+    html: mensaje,
+  };
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(info);
+  } catch (err) {
+    console.log(err);
+  }
   const user = { username, password };
   res.render("index", { user });
 }
@@ -86,4 +132,5 @@ module.exports = {
   getFailsignup,
   getLogout,
   getInfo,
+  getProductos,
 };
