@@ -21,7 +21,7 @@ fetch("/api/productos")
           <h6 class="card-title">Stock disponible: ${dato.stock}</h6>
           <h3 class="card-title">Precio: ${dato.precio}</h3>
 
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="/producto?id=${dato._id}" class="btn btn-primary">agregar al carrito</a>
           </div>
         </div>        
         `;

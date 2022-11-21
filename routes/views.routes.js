@@ -11,6 +11,7 @@ router.get("/", sessionUpdate, controllerViews.getRoot);
 
 //-->Productos
 router.get("/Productos", sessionUpdate, controllerViews.getProductos);
+router.get("/Producto", sessionUpdate, controllerViews.getProducto);
 
 //--->Login
 router.get("/login", controllerViews.getLogin);

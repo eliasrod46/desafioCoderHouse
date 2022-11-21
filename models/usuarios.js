@@ -7,6 +7,7 @@ const UsuarioSchema = new mongoose.Schema({
   telefono: { type: String, required: true, max: 100 },
   username: { type: String, required: true, max: 100 },
   password: { type: String, required: true, max: 100 },
+  carrito: { type: String, required: false, max: 255 },
 });
 
 const Usuarios = mongoose.model(USER_COL, UsuarioSchema);

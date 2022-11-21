@@ -1,3 +1,5 @@
+const { obtenerProducto } = require("../utils/productosFunctions.js");
+
 const { createTransport } = require("nodemailer");
 const fs = require("fs");
 const TEST_MAIL = "eliasrod46@gmail.com";
@@ -14,8 +16,8 @@ const transporter = createTransport({
 
 function getRoot(req, res) {
   if (req.isAuthenticated()) {
-    const { username, password } = req.user;
-    const user = { username, password };
+    const { username, password, carrito } = req.user;
+    const user = { username, password, carrito };
     res.render("index", { user });
   } else {
     res.render("auth/login/login");
@@ -25,9 +27,20 @@ function getRoot(req, res) {
 //---->Porductos
 function getProductos(req, res) {
   if (req.isAuthenticated()) {
-    const { username, password } = req.user;
-    const user = { username, password };
+    const { username, password, carrito } = req.user;
+    const user = { username, password, carrito };
     res.render("productos", { user });
+  } else {
+    res.render("auth/login/login");
+  }
+}
+
+async function getProducto(req, res) {
+  if (req.isAuthenticated()) {
+    const { username, password, carrito } = req.user;
+    const user = { username, password, carrito };
+    const producto = await obtenerProducto(req.query.id);
+    res.render("producto", { user, producto });
   } else {
     res.render("auth/login/login");
   }
@@ -133,4 +146,5 @@ module.exports = {
   getLogout,
   getInfo,
   getProductos,
+  getProducto,
 };

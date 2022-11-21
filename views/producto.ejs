@@ -1,0 +1,22 @@
+<%- include('../public/header')%> <%- include('./partials/navbar')%>
+<br />
+<div>
+  <h1><%= producto.nombre %></h1>
+
+  <div class="card" style="width: 18rem">
+    <img src="<%= producto.foto %>" class="card-img-top" alt="{{dato.nombre}" />
+    <div class="card-body">
+      <h6 class="card-title">Stock disponible:<%=producto.stock%></h6>
+      <h3 class="card-title">Precio: <%=producto.precio%></h3>
+
+      <form action="">
+        <input type="hidden" name="" value="" />
+        <a href="/producto?id=${dato._id}" class="btn btn-primary"
+          >agregar al carrito</a
+        >
+      </form>
+    </div>
+  </div>
+</div>
+<hr />
+<%- include('../public/footer')%> <%= %>

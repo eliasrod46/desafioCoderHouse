@@ -20,6 +20,7 @@ const addData = async (req, res) => {
     nombre: product.nombre,
     precio: product.precio,
     stock: product.stock,
+    foto: product.foto,
   });
   const usuarioGuardado = await productoNuevo.save();
   res.json({ usuarioGuardado });
