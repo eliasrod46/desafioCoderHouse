@@ -1,13 +1,13 @@
 //-----------------------------------------------------------------------------------------------------
 // -----------------------------------------------Server-----------------------------------------------
 //-----------------------------------------------------------------------------------------------------
-const express = require("express");
-const http = require("http");
-const ioServer = (Server = require("socket.io"));
-const app = express();
-const serverHttp = http.createServer(app);
-const io = ioServer(serverHttp);
-module.exports = serverHttp;
+const express = require("express"); //-->servidorExpress
+const http = require("http"); //-->servidorHTTP
+const ioServer = (Server = require("socket.io")); //-->socketServer
+const app = express(); //-->creoExpressServer
+const serverHttp = http.createServer(app); //-->creoHttpServerConExpress
+const io = ioServer(serverHttp); //-->creoSocketApp
+module.exports = serverHttp; //-->exportoHttpServerConExpress
 
 //-----------------------------------------------------------------------------------------------------
 //-----------------------------------------------Modules-----------------------------------------------
@@ -18,13 +18,13 @@ const MongoStore = require("connect-mongo");
 const passport = require("passport");
 require("dotenv").config();
 
-const { connectMG } = require("./config/configDB.js");
-const passPort = require("./utils/passport.js");
+const { connectMG } = require("./config/configDB.js"); //-->importoConfigBBDD
+const passPort = require("./utils/passport.js"); //-->importoConfigPassport
 const {
   MONGO_URI,
   SECRET_KEY_SESSION,
 } = require("./config/environmentConfig.js");
-const { loggInfo, loggWarn, logger } = require("./middlewares/logger.js");
+const { loggInfo, loggWarn, logger } = require("./middlewares/logger.js"); //-->importoConfigBBDD
 
 //-----------------------------------------------------------------------------------------------------
 // -------------------------------------------Config Modules-------------------------------------------

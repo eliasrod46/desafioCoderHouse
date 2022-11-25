@@ -20,6 +20,8 @@ const serverHttp = require("./app.js");
 //-----------------------------------------------------------------------------------------------------
 //-----------------------------------------Levanto el servidor-----------------------------------------
 //-----------------------------------------------------------------------------------------------------
+
+//---->El puerto se puede recibir por variable de entorno o por argumento
 const PORT = process.env.PORT || args.port;
 serverHttp.listen(PORT, () => {
   console.log(`Server escucnado en el puerto http://localhost:${PORT}`);
