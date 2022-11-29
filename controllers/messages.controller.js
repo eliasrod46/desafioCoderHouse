@@ -1,4 +1,7 @@
-const { Mensaje } = require("../models/messages.model.js");
+//------>importo e instancio el dao de productos
+const messageMongoDao = require("../models/daos/mensaje.mongo.dao.js");
+const messageDao = new messageMongoDao();
+
 const { normalizeMensajes } = require("../utils/normalizeData.js");
 const { logger } = require("../middlewares/logger.js");
 class MessagesController {
@@ -7,9 +10,9 @@ class MessagesController {
   async getAll() {
     try {
       //Consulto a la bbdd
-      const mensajes = await Mensaje.find({}).sort({});
+      const daoResponse = await messageDao.getAllMessages();
       //retorno
-      return mensajes;
+      return daoResponse;
     } catch (err) {
       return { error: err };
     }
@@ -19,9 +22,9 @@ class MessagesController {
   async getAllNormalized() {
     try {
       //Consulto a la bbdd
-      const mensajes = await Mensaje.find({}).sort({});
-      //Normalizo el char
-      const info = normalizeMensajes(mensajes);
+      const daoResponse = await messageDao.getAllMessages();
+      //Normalizo el chat
+      const info = normalizeMensajes(daoResponse);
       //retorno
       return info;
     } catch (err) {
@@ -31,23 +34,9 @@ class MessagesController {
 
   async addMessage(Mssg) {
     try {
-      //guardo el archivo
-      const mensajesNuevo = new Mensaje({
-        author: {
-          id: Mssg.author.id,
-          nombre: Mssg.author.nombre,
-          apellido: Mssg.author.apellido,
-          edad: Mssg.author.edad,
-          alias: Mssg.author.alias,
-          avatar: Mssg.author.avatar,
-        },
-        text: Mssg.text,
-        date: Mssg.date,
-      });
-      const Guardado = await mensajesNuevo.save();
-
+      const daoResponse = await messageDao.addMessage(Mssg);
       //retorno
-      if (!Guardado) {
+      if (!daoResponse) {
         throw new Error("Error al guardar");
       }
     } catch (err) {

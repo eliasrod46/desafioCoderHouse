@@ -1,63 +1,52 @@
-const { Productos } = require("../models/product.model.js");
+//------>importo e instancio el dao de productos
+const productMongoDao = require("../models/daos/product.mongo.dao.js");
+const productDao = new productMongoDao();
 const { logger } = require("../middlewares/logger.js");
 
-//Agregar producto
+//------>Obtener productos
 const getData = async (req, res) => {
   const id = req.params.id;
   if (id) {
-    const enviar = await Productos.findById(id);
-    res.json({ respuesta: enviar });
+    //--->Obtener producto por id
+    const daoResponse = await productDao.getProduct(id);
+    res.json({ respuesta: daoResponse });
   } else {
-    const enviar = await Productos.find({});
-    res.json({ respuesta: enviar });
+    //--->Obtener producto por id
+    const daoResponse = await productDao.getAllProducts();
+    res.json({ respuesta: daoResponse });
   }
 };
 
-//Agregar producto
+//------>Agregar producto
 const addData = async (req, res) => {
   const product = req.body;
-  const productoNuevo = new Productos({
-    nombre: product.nombre,
-    precio: product.precio,
-    stock: product.stock,
-    foto: product.foto,
-  });
-  const usuarioGuardado = await productoNuevo.save();
-  res.json({ usuarioGuardado });
+  const daoResponse = await productDao.addProduct(product);
+  res.json({ respuesta: daoResponse });
 };
 
-//actualizar producto
+//------>eliminar producto
+const delData = async (req, res) => {
+  const { id } = req.params;
+  const daoResponse = await productDao.deleteProduct(id);
+  if (daoResponse.deletedCount == 1) {
+    res.json({ respuesta: "Producto eliminado" });
+  } else {
+    logger.error("Producto no encontrado");
+    res.json({ respuesta: "Producto no encontrado" });
+  }
+};
+
+//------>actualizar producto
 const updateData = async (req, res) => {
   const { id } = req.params;
   const { nombre, precio, stock } = req.body;
-  const usuarioModificado = await Productos.updateOne(
-    { _id: id },
-    {
-      $set: {
-        nombre: nombre,
-        precio: precio,
-        stock: stock,
-      },
-    }
-  );
-  if (usuarioModificado.modifiedCount == 1) {
+  const daoResponse = await productDao.updateProduct(id, nombre, precio, stock);
+
+  if (daoResponse.modifiedCount == 1) {
     res.json({ respuesta: "Usuario Modificado" });
   } else {
     logger.error("Usuario NO Modificado");
     res.json({ respuesta: "Usuario NO Modificado" });
-  }
-};
-
-//eliminar producto
-const delData = async (req, res) => {
-  const { id } = req.params;
-  const productoBorrar = await Productos.deleteOne({ _id: id });
-  if (productoBorrar.deletedCount == 1) {
-    res.json({ respuesta: "Producto eliminado" });
-  } else {
-    logger.error("Producto no encontrado");
-
-    res.json({ respuesta: "Producto no encontrado" });
   }
 };
 

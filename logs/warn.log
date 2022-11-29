@@ -71,3 +71,6 @@
 {"level":"warn","message":"La ruta: /producto/public/css/styles.css, con el metodo: GET. No existe"}
 {"level":"warn","message":"La ruta: /producto/public/css/styles.css, con el metodo: GET. No existe"}
 {"level":"warn","message":"La ruta: /producto/public/css/styles.css, con el metodo: GET. No existe"}
+{"level":"error","message":"Producto no encontrado"}
+{"level":"error","message":"Usuario NO Modificado"}
+{"level":"warn","message":"La ruta: /favicon.ico, con el metodo: GET. No existe"}
