@@ -1,4 +1,7 @@
 const { Carritos } = require("../../models/carritos.model.js");
+//------>importo e instancio el dao de productos
+const productMongoDao = require("../../models/daos/product.mongo.dao.js");
+const productDao = new productMongoDao();
 
 const { logger } = require("../../middlewares/logger.js");
 
@@ -32,22 +35,28 @@ class CarritoMongoDao {
   //--->3Ver productos del carrito
   async getProductsInCart(id) {
     const response = await Carritos.findById(id);
-    //-->objetos de produto
+    //-->objetos de carrito
     return response;
   }
 
-  // //4Agregar producto al carrito
-  // async addProductsToCart(id, arrayProductos) {
-  //   try {
-  //     const res = await this.db
-  //       .collection(CARRITOS_COL)
-  //       .doc(id)
-  //       .update({ productos: arrayProductos.productos });
-  //     return "producto Agregado";
-  //   } catch (error) {
-  //     logger.error(error);
-  //   }
-  // }
+  //4Agregar producto al carrito
+  async addProductsToCart(idProducto, idCarrito) {
+    let productsInCart = getProductsInCart(idCarrito);
+    const producto = productDao.getProduct(idProducto);
+    console.log(productsInCart);
+    // productsInCart.push(producto);
+
+    // const response = await Carritos.updateOne(
+    //   { _id: id },
+    //   {
+    //     $set: {
+    //       productos: productsInCart,
+    //     },
+    //   }
+    // );
+    // //-->objeto de info query
+    // return response;
+  }
 
   // //5Eliminar producto del carrito
   // async delProductsToCart(id, id_producto, arrayProductosInCart) {

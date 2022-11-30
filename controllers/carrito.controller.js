@@ -29,29 +29,12 @@ const showProducts = async (req, res) => {
   res.json({ respuesta });
 };
 
-// //4Agregar producto al carrito
-// const addProducts = async (req, res) => {
-//   const { id, id_producto } = req.params;
-//   //busco el producto con el id recibido
-//   const product = await Productos.findById(id_producto);
-//   //Verifico si existe el producto
-//   if (product) {
-//     //traido el array de productos del carrito indicado
-//     const productsInCart = await CarritoModel.showProductsInCart(id);
-//     // pusheo el nuevo producto en el array
-//     productsInCart.productos.push({
-//       id: String(product._id),
-//       nombre: product.nombre,
-//       precio: product.precio,
-//       stock: product.stock,
-//     });
-//     //Envio el array para actualizar
-//     const respuesta = await CarritoModel.addProductsToCart(id, productsInCart);
-//     res.json({ respuesta: respuesta });
-//   } else {
-//     res.json({ respuesta: "Producto no encontrado" });
-//   }
-// };
+//4Agregar producto al carrito
+const addProducts = async (req, res) => {
+  const { id, id_producto } = req.params;
+  const respuesta = await CarritoDao.addProductsToCart(id, id_producto);
+  res.json({ respuesta: "sera" });
+};
 
 // //5Eliminar producto del carrito
 // const delProduct = async (req, res) => {
